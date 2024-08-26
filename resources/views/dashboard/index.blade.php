@@ -36,7 +36,7 @@
                             </div>
                             <h4 class="fw-semibold mb-3"><span class="counter-value" data-target="1000000"></span>
                             </h4>
-                            <p class="fw-medium text-muted mb-0">Total Pendapatan</p>
+                            <p class="fw-medium text-muted mb-0">Surat Masuk</p>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                             </div>
                             <h4 class="fw-semibold mb-3"><span class="counter-value" data-target="20000"></span>
                             </h4>
-                            <p class="fw-medium text-muted mb-0">Pendapatan Perbulan Juli</p>
+                            <p class="fw-medium text-muted mb-0">Surat Keluar</p>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                             </div>
                             <h4 class="fw-semibold mb-3"><span class="counter-value" data-target="1902"></span>
                             </h4>
-                            <p class="fw-medium text-muted mb-0">Tunggakan Siswa bulan Juli</p>
+                            <p class="fw-medium text-muted mb-0">Notulen</p>
                         </div>
                     </div>
                 </div>
@@ -89,8 +89,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <h4 class="fw-semibold mb-3"><span class="counter-value" data-target="3174">174</span></h4>
-                            <p class="fw-medium text-muted mb-0">Siswa Belum Lunas Bulan Juli</p>
+                            <h4 class="fw-semibold mb-3"><span class="counter-value" data-target="4000">8</span></h4>
+                            <p class="fw-medium text-muted mb-0">Faktur</p>
                         </div>
                     </div>
                 </div>

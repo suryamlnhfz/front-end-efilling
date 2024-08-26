@@ -33,11 +33,49 @@
 <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css">
 <!-- custom Css-->
 <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css">
+
+<!-- list.js min js -->
+<link href="{{ asset('assets/libs/list.js/list.min.js') }}" rel="stylesheet" type="text/css">
+<script src="{{ asset('assets/libs/list.pagination.js/list.pagination.min.js') }}"></script>
+
+<link href="{{ asset('assets/libs/list.pagination.js/list.pagination.min.js') }}" rel="stylesheet" type="text/css">
+<!-- sweetalert2 js -->
+<link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}" rel="stylesheet" type="text/css">
+<!-- dropzone js -->
+<link href="{{ asset('assets/libs/dropzone/dropzone-min.js') }}" rel="stylesheet" type="text/css">
+<!--Ecommerce Product List init js-->
+<link href="{{ asset('assets/js/pages/ecommerce-product-list.init.js') }}" rel="stylesheet" type="text/css">
+<!-- App js -->
+<link href="{{ asset('assets/js/app.js') }}" rel="stylesheet" type="text/css">
 <!-- Sweet Alert Css-->
+<link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css">
+
+<!-- dropzone css -->
+<link href="{{ asset('assets/libs/dropzone/dropzone.css') }}" rel="stylesheet" type="text/css">
+<script src="{{ asset('assets/js/plugins.js') }}"></script>
+<script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+
 <style>
-    body {
-        overflow-x: hidden
+
+    .modal-body {
+        overflow-y: auto;
+        max-height: 70vh;
+        /* Ubah sesuai kebutuhan */
     }
+
+    .modal {
+        z-index: 1050;
+        /* Pastikan z-index lebih tinggi dari elemen lain */
+    }
+
+    .modal-backdrop {
+        z-index: 1040;
+        /* Ini untuk backdrop (overlay) */
+    }
+    .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5); /* Pastikan backdrop tidak terlalu gelap */
+}
+
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
