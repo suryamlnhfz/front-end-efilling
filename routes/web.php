@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('test_pdf', function () {
     return view('welcome');
 });
+
 Route::get('/', function () {
     return view('dashboard.index');
 });
+
 Route::get('penyimpanan', function() {
     return view('surat_masuk.penyimpanan');
 });

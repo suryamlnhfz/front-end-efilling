@@ -27,7 +27,7 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ url('penyimpanan') }}" class="nav-link" data-key="t-analytics">
-                                    Penyimpanan
+                                    Arsip
                                 </a>
                             </li>
                             </li>
@@ -36,8 +36,8 @@
                     <div class="collapse menu-dropdown" id="sidebarDashboards">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics">
-                                    Tambah
+                                <a href="{{ 'tambah_data' }}" class="nav-link" data-key="t-analytics">
+                                    Tambah Surat
                                 </a>
                             </li>
                             </li>

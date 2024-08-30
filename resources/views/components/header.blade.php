@@ -54,6 +54,9 @@
 <link href="{{ asset('assets/libs/dropzone/dropzone.css') }}" rel="stylesheet" type="text/css">
 <script src="{{ asset('assets/js/plugins.js') }}"></script>
 <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+<script src="{{ asset('assets/libs/@ckeditor5-build-classic/build/ckeditor.js') }}"></script>
+<script src="{{ asset('assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
+
 
 <style>
 

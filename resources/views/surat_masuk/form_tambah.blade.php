@@ -1,184 +1,108 @@
 @extends('layouts.base')
 
 @section('content')
-<div class="main-content">
-
     <div class="page-content">
         <div class="row">
-            <div class="col-xxl-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title mb-0">Scrollable Modal</h4>
-                    </div><!-- end card header -->
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0">Tambah Surat</h4>
 
-                    <div class="card-body">
-
-                        <p class="text-muted">Use<code> modal-dialog-scrollable</code> class to create a
-                            modal scrollable.</p>
-
-                        <div>
-                            <!-- Scrollable modal -->
-                            <button type="button" class="btn btn-primary " data-bs-toggle="modal"
-                                data-bs-target="#exampleModalScrollable">Scrollable Modal</button>
-
-                            <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalScrollableTitle">
-                                                Scrollable
-                                                Modal</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close">
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h6 class="fs-base">Give your text a good structure</h6>
-                                            <div class="d-flex">
-                                                <div class="flex-shrink-0">
-                                                    <i class="ri-checkbox-circle-fill text-success"></i>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2">
-                                                    <p class="text-muted mb-0">Raw denim you probably
-                                                        haven't heard of them jean shorts Austin.
-                                                        Nesciunt tofu stumptown aliqua, retro synth master
-                                                        cleanse.</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex mt-2">
-                                                <div class="flex-shrink-0">
-                                                    <i class="ri-checkbox-circle-fill text-success"></i>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2 ">
-                                                    <p class="text-muted mb-0">Too much or too little
-                                                        spacing, as in the example below, can make things
-                                                        unpleasant for the reader. The goal is to make your
-                                                        text as comfortable to read as possible. </p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex mt-2">
-                                                <div class="flex-shrink-0">
-                                                    <i class="ri-checkbox-circle-fill text-success"></i>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2 ">
-                                                    <p class="text-muted mb-0">In some designs, you might
-                                                        adjust your tracking to create a certain artistic
-                                                        effect. It can also help you fix fonts that are
-                                                        poorly spaced to begin with.</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex mt-2">
-                                                <div class="flex-shrink-0">
-                                                    <i class="ri-checkbox-circle-fill text-success"></i>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2 ">
-                                                    <p class="text-muted mb-0">For that very reason, I went
-                                                        on a quest and spoke to many different professional
-                                                        graphic designers and asked them what graphic design
-                                                        tips they live.</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex mt-2">
-                                                <div class="flex-shrink-0">
-                                                    <i class="ri-checkbox-circle-fill text-success"></i>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2 ">
-                                                    <p class="text-muted mb-0">You've probably heard that
-                                                        opposites attract. The same is true for fonts. Don't
-                                                        be afraid to combine font styles that are different
-                                                        but complementary, like sans serif with serif, short
-                                                        with tall, or decorative with simple. Qui photo
-                                                        booth letterpress, commodo enim craft beer mlkshk
-                                                        aliquip jean shorts ullamco ad vinyl cillum PBR.</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex mt-2">
-                                                <div class="flex-shrink-0">
-                                                    <i class="ri-checkbox-circle-fill text-success"></i>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2 ">
-                                                    <p class="text-muted mb-0">For that very reason, I went
-                                                        on a quest and spoke to many different professional
-                                                        graphic designers and asked them what graphic design
-                                                        tips they live.</p>
-                                                </div>
-                                            </div>
-                                            <h6 class="fs-lg my-3">Graphic Design</h6>
-                                            <div class="d-flex mt-2">
-                                                <div class="flex-shrink-0">
-                                                    <i class="ri-checkbox-circle-fill text-success"></i>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2 ">
-                                                    <p class="text-muted mb-0">Opposites attract, and that’s
-                                                        a fact. It’s in our nature to be interested in the
-                                                        unusual, and that’s why using contrasting colors in
-                                                        Graphic Design is a must. It’s eye-catching, it
-                                                        makes a statement, it’s impressive graphic design.
-                                                        Increase or decrease the letter spacing depending.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex mt-2">
-                                                <div class="flex-shrink-0">
-                                                    <i class="ri-checkbox-circle-fill text-success"></i>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2 ">
-                                                    <p class="text-muted mb-0">Trust fund seitan
-                                                        letterpress, keytar raw denim keffiyeh etsy art
-                                                        party before they sold out master cleanse
-                                                        gluten-free squid scenester freegan cosby sweater.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex mt-2">
-                                                <div class="flex-shrink-0">
-                                                    <i class="ri-checkbox-circle-fill text-success"></i>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2 ">
-                                                    <p class="text-muted mb-0">Just like in the image where
-                                                        we talked about using multiple fonts, you can see
-                                                        that the background in this graphic design is
-                                                        blurred. Whenever you put text on top of an image,
-                                                        it’s important that your viewers can understand.</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex mt-2">
-                                                <div class="flex-shrink-0">
-                                                    <i class="ri-checkbox-circle-fill text-success"></i>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2 ">
-                                                    <p class="text-muted mb-0">Keytar raw denim keffiyeh
-                                                        etsy art party before they sold out master cleanse
-                                                        gluten-free squid scenester freegan cosby sweater.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-light"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save
-                                                changes</button>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
-                        </div>
-                    </div><!-- end card-body -->
-                    <div class="card-body bg-light border-bottom border-top bg-opacity-25">
-                        <h5 class="fs-xs text-muted mb-0">HTML Preview</h5>
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                            <li class="breadcrumb-item active">Add Product</li>
+                        </ol>
                     </div>
-                    <div class="card-body">
-                        <pre class="language-markup" style="height: 120px;"><code>&lt;!-- Scrollable Modal --&gt;
-&lt;div class=&quot;modal-dialog modal-dialog-scrollable&quot;&gt;
-...
-&lt;/div&gt;</code></pre>
-                    </div>
-                </div><!-- end card -->
+
+                </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xxl-4">
+                                <h5 class="card-title mb-3">Perhatian</h5>
+                                <p class="text-muted">Jika anda ingin membuat surat dengan 2 halaman atau lebih maka pilih
+                                    page sebanyak 3</p>
+                            </div>
+                            <div class="col-xxl-8">
+                                <form action="#!">
+                                    <div class="mb-3">
+                                        <label for="productTitle" class="form-label">Nomor Surat<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="productTitle" placeholder=""
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productCategories" class="form-label">Kategori<span
+                                                class="text-danger">*</span></label>
+                                        <select class="form-control" data-choices name="productCategories"
+                                            id="productCategories">
+                                            <option value="">Perbaikan (H)</option>
+                                            <option value="Appliances">Formulir Calas (P)</option>
+                                            <option value="Automotive Accessories">SK Asisten (S)</option>
+                                            <option value="Electronics">Sertifikat Webinar (SS)</option>
+                                            <option value="Fashion">Sertifikat Asisten (SA)</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="shortDecs" class="form-label">Deskripsi<span
+                                                class="text-danger">*</span></label>
+                                        <textarea class="form-control" id="shortDecs" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="shortDecs" class="form-label">Penutup<span
+                                                class="text-danger">*</span></label>
+                                        <textarea class="form-control" id="shortDecs" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label">Tanda Tangan Digital</label>
+                                        <input class="form-control" type="file"
+                                            id="formFile">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="productTitle" class="form-label">Nama yang bertanda tangan<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="productTitle" placeholder=""
+                                            required>
+                                    </div>
+                                    {{-- <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="productBrand" class="form-label">Brand <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="productBrand"
+                                                    placeholder="Enter brand" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="productUnit" class="form-label">Unit <span
+                                                        class="text-danger">*</span></label>
+                                                <select class="form-control" data-choices name="productUnit"
+                                                    id="productUnit">
+                                                    <option value="">Select Unit</option>
+                                                    <option value="Kilogram">Kilogram</option>
+                                                    <option value="Pieces">Pieces</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                </form>
+                            </div><!--end col-->
+                        </div><!--end row-->
+
+                        <div class="hstack gap-2 justify-content-end mb-3">
+                            <a href="{{ url('/') }}" class="btn btn-danger"><i class="ph-x align-middle"></i> Cancel</a>
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end col-->
+        </div><!--end row-->
+        <div class="main-content">
+        </div>
     </div>
-
-</div>
-
 @endsection
