@@ -11,4 +11,3 @@
     </div>
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
 </footer>
-

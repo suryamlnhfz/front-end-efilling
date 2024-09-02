@@ -30,72 +30,49 @@
                             <div class="col-xxl-8">
                                 <form action="#!">
                                     <div class="mb-3">
-                                        <label for="productTitle" class="form-label">Nomor Surat<span
+                                        <label for="nomorSurat" class="form-label">Nomor Surat<span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="productTitle" placeholder=""
-                                            required>
+                                        <input type="text" name="nomorSurat" class="form-control" id="nomorSurat" placeholder="" required disabled>
                                     </div>
                                     <div class="mb-3">
                                         <label for="productCategories" class="form-label">Kategori<span
                                                 class="text-danger">*</span></label>
-                                        <select class="form-control" data-choices name="productCategories"
+                                        <select name="kategori" class="form-control" data-choices name="productCategories"
                                             id="productCategories">
-                                            <option value="">Perbaikan (H)</option>
-                                            <option value="Appliances">Formulir Calas (P)</option>
-                                            <option value="Automotive Accessories">SK Asisten (S)</option>
-                                            <option value="Electronics">Sertifikat Webinar (SS)</option>
-                                            <option value="Fashion">Sertifikat Asisten (SA)</option>
+                                            <option value="perbaikan">Perbaikan (H)</option>
+                                            <option value="formulir_calas">Formulir Calas (P)</option>
+                                            <option value="sk_asisten">SK Asisten (S)</option>
+                                            <option value="sertifikat_webinar">Sertifikat Webinar (SS)</option>
+                                            <option value="sertifikat_asisten">Sertifikat Asisten (SA)</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="shortDecs" class="form-label">Deskripsi<span
                                                 class="text-danger">*</span></label>
-                                        <textarea class="form-control" id="shortDecs" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
+                                        <textarea name="deskripsi" class="form-control" id="shortDecs" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="shortDecs" class="form-label">Penutup<span
+                                        <label for="penutup" class="form-label">Penutup<span
                                                 class="text-danger">*</span></label>
-                                        <textarea class="form-control" id="shortDecs" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
+                                        <textarea name="penutup" class="form-control" id="penutup" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="formFile" class="form-label">Tanda Tangan Digital</label>
-                                        <input class="form-control" type="file"
-                                            id="formFile">
+                                        <input name="ttd" class="form-control" type="file" id="formFile">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="productTitle" class="form-label">Nama yang bertanda tangan<span
+                                        <label for="namaTandaTangan" class="form-label">Nama yang bertanda tangan<span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="productTitle" placeholder=""
+                                        <input name="nama" type="text" class="form-control" id="namaTandaTangan" placeholder=""
                                             required>
                                     </div>
-                                    {{-- <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="productBrand" class="form-label">Brand <span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="productBrand"
-                                                    placeholder="Enter brand" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="productUnit" class="form-label">Unit <span
-                                                        class="text-danger">*</span></label>
-                                                <select class="form-control" data-choices name="productUnit"
-                                                    id="productUnit">
-                                                    <option value="">Select Unit</option>
-                                                    <option value="Kilogram">Kilogram</option>
-                                                    <option value="Pieces">Pieces</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                 </form>
                             </div><!--end col-->
                         </div><!--end row-->
 
                         <div class="hstack gap-2 justify-content-end mb-3">
-                            <a href="{{ url('/') }}" class="btn btn-danger"><i class="ph-x align-middle"></i> Cancel</a>
+                            <a href="{{ url('/') }}" class="btn btn-danger"><i class="ph-x align-middle"></i>
+                                Cancel</a>
                             <button class="btn btn-primary">Submit</button>
                         </div>
                     </div>
@@ -105,4 +82,30 @@
         <div class="main-content">
         </div>
     </div>
+    <script>
+        document.getElementById('productCategories').addEventListener('change', function() {
+            var nomorSuratInput = document.getElementById('nomorSurat');
+
+            switch (this.value) {
+                case 'perbaikan':
+                    nomorSuratInput.value = 'H/UBL/LAB/010/62/07/24';
+                    break;
+                case 'formulir_calas':
+                    nomorSuratInput.value = 'P/UBL/LAB/010/62/07/24';
+                    break;
+                case 'sk_asisten':
+                    nomorSuratInput.value = 'S/UBL/LAB/010/044/07/24';
+                    break;
+                case 'sertifikat_webinar':
+                    nomorSuratInput.value = 'SS/UBL/LAB/010/62/07/24';
+                    break;
+                case 'sertifikat_asisten':
+                    nomorSuratInput.value = 'SA/UBL/LAB/010/62/07/24';
+                    break;
+                default:
+                    nomorSuratInput.value = '';
+                    break;
+            }
+        });
+    </script>
 @endsection
