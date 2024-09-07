@@ -59,11 +59,19 @@
 
 
 <style>
-
     .modal-body {
         overflow-y: auto;
         max-height: 70vh;
         /* Ubah sesuai kebutuhan */
+    }
+
+    .additional-input {
+        display: none;
+    }
+
+    .additional-input .form-group {
+        display: inline-block;
+        margin-right: 10px;
     }
 
     .modal {
@@ -75,10 +83,11 @@
         z-index: 1040;
         /* Ini untuk backdrop (overlay) */
     }
-    .modal-backdrop {
-    background-color: rgba(0, 0, 0, 0.5); /* Pastikan backdrop tidak terlalu gelap */
-}
 
+    .modal-backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Pastikan backdrop tidak terlalu gelap */
+    }
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>

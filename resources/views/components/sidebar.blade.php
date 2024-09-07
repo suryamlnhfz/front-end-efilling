@@ -5,7 +5,7 @@
 
 
         <li class="nav-item">
-            <a href="{{ url('dashboard') }}" class="nav-link menu-link @if (request()->is('dashboard')) active @endif">
+            <a href="{{ route('/.index') }}" class="nav-link menu-link @if (request()->is('/')) active @endif">
                 <i class="ph-gauge"></i> <span data-key="t-calendar">Dashboard</span> </a>
         </li>
     </ul>
@@ -21,12 +21,12 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link collapsed" href="#sidebarDashboards" data-bs-toggle="collapse"
                         role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ph-gauge"></i> <span data-key="t-dashboards">Surat Masuk</span>
+                        <i class="ph-gauge"></i> <span data-key="t-dashboards">Surat Online</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarDashboards">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ url('penyimpanan') }}" class="nav-link" data-key="t-analytics">
+                                <a href="{{ url('penyimpanan') }}" class="nav-link menu-link @if (request()->is('penyimpanan')) active @endif" data-key="t-analytics">
                                     Arsip
                                 </a>
                             </li>
@@ -36,8 +36,8 @@
                     <div class="collapse menu-dropdown" id="sidebarDashboards">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ 'tambah_data' }}" class="nav-link" data-key="t-analytics">
-                                    Tambah Surat
+                                <a href="{{ route('surat-masuk.index') }}" class="nav-link menu-link @if (request()->is('surat-masuk.index')) active @endif" data-key="t-analytics">
+                                    Surat
                                 </a>
                             </li>
                             </li>
