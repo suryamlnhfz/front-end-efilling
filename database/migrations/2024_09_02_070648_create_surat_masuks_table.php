@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('kategori');
             $table->string('deskripsi');
             $table->string('penutup');
-            $table->string('tanda_tangan')->default('');
             $table->string('nama');
+            $table->integer('flag')->default(0);
             $table->timestamps();
         });
     }

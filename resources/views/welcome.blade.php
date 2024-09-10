@@ -107,7 +107,7 @@
             </p>
             <table>
                 <tr>
-                    <th>Nama Laboratorium</th>
+            
                     <th>Lokasi</th>
                     <th>Kapasitas</th>
                     <th>Total</th>

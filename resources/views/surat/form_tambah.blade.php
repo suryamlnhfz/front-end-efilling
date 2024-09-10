@@ -35,7 +35,7 @@
                                         <label for="nomorSurat" class="form-label">Nomor Surat<span
                                                 class="text-danger">*</span></label>
                                         <input type="text" name="nomorSurat" class="form-control" id="nomorSurat"
-                                            placeholder="" required disabled>
+                                            placeholder="" required readonly>
                                     </div>
 
                                     <div class="mb-3">
@@ -86,12 +86,13 @@
                                             </div>
 
                                             <button id="addKolomBtn" class="btn btn-primary">Tambah Kolom</button>
-
                                             <div id="barisContainer" class="mt-3">
-                                                <div class="form-group d-flex align-items-center">
-                                                    <label for="tableInputBaris1" class="form-label">Baris 1:</label>
+                                                <!-- Baris awal -->
+                                                <div class="form-group d-flex align-items-center" style="margin-top: 10px;">
+                                                    <label for="tableInputBaris1" class="form-label">Baris 1 :</label>
                                                     <input name="baris[1][value]" type="text" class="form-control"
-                                                        id="tableInputBaris1" placeholder="Masukkan data baris">
+                                                        id="tableInputBaris1" placeholder="Masukkan data baris"
+                                                        style="flex: 1; margin-left: 10px;">
                                                     <button class="btn btn-link p-0 ms-2"
                                                         onclick="removeField(this, 'baris')">
                                                         <i class="bi bi-x-lg" style="font-size: 1.25rem; color: gray;"></i>
@@ -104,7 +105,8 @@
                                                 <div class="sub-input-container">
                                                     <div class="sub-input form-group d-flex align-items-center mt-2">
                                                         <input name="baris[1][sub][1]" type="text"
-                                                            class="form-control" placeholder="Masukkan data sub-input">
+                                                            class="form-control" placeholder="Masukkan data sub-input"
+                                                            style="flex: 1; margin-left: 10px;">
                                                         <button class="btn btn-link p-0 ms-2"
                                                             onclick="removeSubInput(this)">
                                                             <i class="bi bi-x-lg"
@@ -161,24 +163,28 @@
         </div><!--end row-->
     </div>
     <script>
+        let year = '{{ $year }}';
+        let month = '{{ $month }}';
+        let jmlData = '{{ $jmlData }}';
+
         document.getElementById('productCategories').addEventListener('change', function() {
             var nomorSuratInput = document.getElementById('nomorSurat');
 
             switch (this.value) {
                 case 'perbaikan':
-                    nomorSuratInput.value = 'H/UBL/LAB/010/62/07/24';
+                    nomorSuratInput.value = 'H/UBL/LAB/010/'+jmlData+ '/'+ month + '/' + year;
                     break;
                 case 'formulir_calas':
-                    nomorSuratInput.value = 'P/UBL/LAB/010/62/07/24';
+                    nomorSuratInput.value = 'P/UBL/LAB/010/'+jmlData+ '/'+ month + '/' + year;
                     break;
                 case 'sk_asisten':
-                    nomorSuratInput.value = 'S/UBL/LAB/010/044/07/24';
+                    nomorSuratInput.value = 'S/UBL/LAB/010/'+jmlData+ '/'+ month + '/' + year;
                     break;
                 case 'sertifikat_webinar':
-                    nomorSuratInput.value = 'SS/UBL/LAB/010/62/07/24';
+                    nomorSuratInput.value = 'SS/UBL/LAB/010/'+jmlData+ '/'+ month + '/' + year;
                     break;
                 case 'sertifikat_asisten':
-                    nomorSuratInput.value = 'SA/UBL/LAB/010/62/07/24';
+                    nomorSuratInput.value = 'SA/UBL/LAB/010/'+jmlData+ '/'+ month + '/' + year;
                     break;
                 default:
                     nomorSuratInput.value = '';
@@ -188,9 +194,9 @@
 
         document.getElementById('productPage').addEventListener('change', function() {
             var additionalInputs = document.getElementById('additionalInputs');
-            additionalInputs.innerHTML = ''; // Kosongkan konten sebelumnya
+            additionalInputs.innerHTML = '';
 
-            if (this.value === 'dua') { // Jika pilihannya '2'
+            if (this.value === 'dua') {
                 var deskripsiInput = `
             <div class="mb-3">
                 <h5>Halaman 2</h5>
@@ -210,9 +216,20 @@
         });
 
         document.getElementById('productTable').addEventListener('change', function() {
-            var additionalInput = document.getElementById('additionalInput');
+            const additionalInput = document.getElementById('additionalInput');
+            const barisContainer = document.getElementById('barisContainer');
+
             if (this.value === 'Ya') {
                 additionalInput.style.display = 'block';
+                // Hapus semua sub-input yang mungkin ada
+                barisContainer.querySelectorAll('.sub-input-container').forEach(container => {
+                    container.innerHTML = ''; // Kosongkan sub-input di setiap baris
+                });
+
+                // Tambahkan baris awal jika belum ada
+                if (!barisContainer.querySelector('.form-group')) {
+                    document.getElementById('addBarisBtn').click();
+                }
             } else {
                 additionalInput.style.display = 'none';
             }
@@ -221,29 +238,29 @@
         let kolomCount = 1;
         let barisCount = 1;
 
-        // Fungsi untuk menambah input kolom
         document.getElementById('addKolomBtn').addEventListener('click', function(e) {
             e.preventDefault();
             kolomCount++;
             const kolomContainer = document.getElementById('kolomContainer');
             const newKolom = `
-    <div class="form-group" style="display: flex; align-items: center; margin-top: 10px;">
-        <label for="tableInputKolom${kolomCount}" class="form-label">Kolom ${kolomCount}:</label>
-        <input name="kolom${kolomCount}" type="text" class="form-control" id="tableInputKolom${kolomCount}" placeholder="Masukkan data kolom" style="flex: 1; margin-left: 10px;">
-        <button class="btn btn-link p-0" style="margin-left: 10px;" onclick="removeField(this, 'kolom')">
-            <i class="bi bi-x-lg" style="font-size: 1.25rem; color: gray;"></i> <!-- Ikon cross dengan warna abu-abu -->
-        </button>
-    </div>
+            <div class="form-group" style="display: flex; align-items: center; margin-top: 10px;">
+                <label for="tableInputKolom${kolomCount}" class="form-label">Kolom ${kolomCount}:</label>
+                <input name="kolom${kolomCount}" type="text" class="form-control" id="tableInputKolom${kolomCount}" placeholder="Masukkan data kolom" style="flex: 1; margin-left: 10px;">
+                <button class="btn btn-link p-0" style="margin-left: 10px;" onclick="removeField(this, 'kolom')">
+                    <i class="bi bi-x-lg" style="font-size: 1.25rem; color: gray;"></i> <!-- Ikon cross dengan warna abu-abu -->
+                </button>
+            </div>
     `;
             kolomContainer.insertAdjacentHTML('beforeend', newKolom);
             updateKolomLabels();
         });
+
         document.getElementById('addBarisBtn').addEventListener('click', function(e) {
             e.preventDefault();
             barisCount++;
             const barisContainer = document.getElementById('barisContainer');
             const newBaris = `
-        <div class="form-group d-flex align-items-center">
+        <div class="form-group d-flex align-items-center mt-3 mb-3">
             <label for="tableInputBaris${barisCount}" class="form-label">Baris ${barisCount}:</label>
             <input name="baris[${barisCount}][value]" type="text" class="form-control" id="tableInputBaris${barisCount}" 
                 placeholder="Masukkan data baris" style="flex: 1; margin-left: 10px;">
@@ -258,6 +275,7 @@
     `;
             barisContainer.insertAdjacentHTML('beforeend', newBaris);
         });
+
 
         function addSubInput(button) {
             event.preventDefault();
@@ -278,26 +296,29 @@
         }
 
 
-
         function removeSubInput(button) {
             button.closest('.sub-input').remove();
         }
 
-        // Fungsi untuk menghapus baris atau kolom
         function removeField(button, type) {
             const parent = button.closest('.form-group');
-            parent.remove();
 
-            if (type === 'kolom') {
+            if (type === 'baris') {
+                const rowContainer = parent.nextElementSibling;
+                if (rowContainer && rowContainer.classList.contains('sub-input-container')) {
+                    rowContainer.remove();
+                }
+
+                parent.remove();
+                updateBarisLabels();
+            } else if (type === 'kolom') {
                 kolomCount--;
                 updateKolomLabels();
-            } else if (type === 'baris') {
-                barisCount--;
-                updateBarisLabels();
             }
         }
 
-        // Fungsi untuk memperbarui label kolom
+
+
         function updateKolomLabels() {
             const kolomLabels = document.querySelectorAll('#kolomContainer .form-group .form-label');
             kolomLabels.forEach((label, index) => {
@@ -308,15 +329,17 @@
             kolomCount = kolomLabels.length;
         }
 
-        // Fungsi untuk memperbarui label baris
         function updateBarisLabels() {
             const barisLabels = document.querySelectorAll('#barisContainer .form-group .form-label');
             barisLabels.forEach((label, index) => {
-                label.innerText = `Baris ${index + 1}:`;
-                label.setAttribute('for', `tableInputBaris${index + 1}`);
-                label.nextElementSibling.setAttribute('id', `tableInputBaris${index + 1}`);
+                const rowNumber = index + 1; // Mulai dari 1
+                label.innerText = `Baris ${rowNumber}:`;
+                const inputElement = label.nextElementSibling;
+                label.setAttribute('for', `tableInputBaris${rowNumber}`);
+                inputElement.setAttribute('id', `tableInputBaris${rowNumber}`);
+                inputElement.setAttribute('name', `baris[${rowNumber}][value]`);
             });
-            barisCount = barisLabels.length;
+            barisCount = barisLabels.length; // Perbarui jumlah baris yang ada
         }
     </script>
 @endsection

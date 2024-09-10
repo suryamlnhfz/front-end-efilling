@@ -15,16 +15,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('surat_masuk_id');
             $table->foreign('surat_masuk_id')->references('id')->on('surat_masuks')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('kolom1');
-            $table->string('kolom2');
-            $table->string('kolom3');
-            $table->string('kolom4');
-            $table->string('kolom5');
-            $table->string('baris1');
-            $table->string('baris2');
-            $table->string('baris3');
-            $table->string('baris4');
-            $table->string('baris5');
+            $table->string('kolom1')->default('tidak ada');
+            $table->string('kolom2')->default('tidak ada');
+            $table->string('kolom3')->default('tidak ada');
+            $table->string('kolom4')->default('tidak ada');
+            $table->string('kolom5')->default('tidak ada');
+            $table->string('baris1')->default('tidak ada');
+            $table->string('baris2')->default('tidak ada');
+            $table->string('baris3')->default('tidak ada');
+            $table->string('baris4')->default('tidak ada');
+            $table->string('baris5')->default('tidak ada');
             $table->timestamps();
         });
     }
