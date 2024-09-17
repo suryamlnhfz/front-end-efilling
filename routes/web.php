@@ -6,16 +6,21 @@ use App\Models\SuratMasuk;
 use Illuminate\Support\Facades\Route;
 
 Route::get('test_pdf', function () {
-    return view('welcome');
+    return view('template_surat.welcome');
 });
 
 Route::get('penyimpanan', function() {
-    return view('surat.penyimpanan');
+    return view('arsip.penyimpanan');
 });
 
 
+
+Route::get('cetak-surat/cetak_surat/{id}', [SuratMasukController::class, 'cetak_surat'])->name('cetak-surat.cetak_surat');
 Route::resource('/', DashboardController::class)->name('index', '/.index');
 // Route::resource('');
 Route::get('form-tambah', [SuratMasukController::class, 'form_tambah']);
-Route::resource('surat-masuk', SuratMasukController::class)->name('index', 'surat-masuk.index');
-Route::resource('tambah_surat', SuratMasukController::class)->name('store', 'tambah_surat.store');
+Route::resource('surat-masuk', SuratMasukController::class);
+Route::resource('tambah_surat', SuratMasukController::class);
+// Route::get('surat/edit/{id}', [SuratMasukController::class, 'edit'])->name('surat.edit');
+Route::get('surat/edit/{id}', [SuratMasukController::class, 'edit'])->name('surat.edit');
+

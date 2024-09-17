@@ -41,15 +41,32 @@
                                     <div class="mb-3">
                                         <label for="productCategories" class="form-label">Kategori<span
                                                 class="text-danger">*</span></label>
-                                        <select name="kategori" class="form-control" data-choices name="productCategories"
-                                            id="productCategories">
-                                            <option value="perbaikan">Perbaikan (H)</option>
-                                            <option value="formulir_calas">Formulir Calas (P)</option>
-                                            <option value="sk_asisten">SK Asisten (S)</option>
-                                            <option value="sertifikat_webinar">Sertifikat Webinar (SS)</option>
-                                            <option value="sertifikat_asisten">Sertifikat Asisten (SA)</option>
+                                        <select name="kategori" class="form-control" data-choices id="productCategories">
+                                            <option value="Perbaikan">Perbaikan (H)</option>
+                                            <option value="Formulir Calas">Formulir Calas (P)</option>
+                                            <option value="SK Asisten">SK Asisten (S)</option>
+                                            <option value="Sertifikat Webinar">Sertifikat Webinar (SS)</option>
+                                            <option value="Sertifikat Asisten">Sertifikat Asisten (SA)</option>
                                         </select>
                                     </div>
+                                    <div class="mb-3">
+                                        <label for="tujuan_surat" class="form-label">Tujuan Surat<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" name="tujuan_surat" class="form-control" id="tujuan_surat"
+                                            placeholder="" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputdate" class="form-label">Tanggal Terima</label>
+                                        <input type="date" name="tanggal_terima" class="form-control"
+                                            id="exampleInputdate">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="penerima" class="form-label">Penerima<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" name="penerima" class="form-control" id="penerima"
+                                            placeholder="" required>
+                                    </div>
+
                                     <div class="mb-3">
                                         <label for="productPage" class="form-label">Ingin menambahkan lampiran ?<span
                                                 class="text-danger">*</span></label>
@@ -80,7 +97,8 @@
                                                         style="flex: 1; margin-left: 10px;">
                                                     <button class="btn btn-link p-0 ms-2"
                                                         onclick="removeField(this, 'kolom')">
-                                                        <i class="bi bi-x-lg" style="font-size: 1.25rem; color: gray;"></i>
+                                                        <i class="bi bi-x-lg"
+                                                            style="font-size: 1.25rem; color: gray;"></i>
                                                     </button>
                                                 </div>
                                             </div>
@@ -88,14 +106,16 @@
                                             <button id="addKolomBtn" class="btn btn-primary">Tambah Kolom</button>
                                             <div id="barisContainer" class="mt-3">
                                                 <!-- Baris awal -->
-                                                <div class="form-group d-flex align-items-center" style="margin-top: 10px;">
+                                                <div class="form-group d-flex align-items-center"
+                                                    style="margin-top: 10px;">
                                                     <label for="tableInputBaris1" class="form-label">Baris 1 :</label>
                                                     <input name="baris[1][value]" type="text" class="form-control"
                                                         id="tableInputBaris1" placeholder="Masukkan data baris"
                                                         style="flex: 1; margin-left: 10px;">
                                                     <button class="btn btn-link p-0 ms-2"
                                                         onclick="removeField(this, 'baris')">
-                                                        <i class="bi bi-x-lg" style="font-size: 1.25rem; color: gray;"></i>
+                                                        <i class="bi bi-x-lg"
+                                                            style="font-size: 1.25rem; color: gray;"></i>
                                                     </button>
                                                     <button class="btn btn-link p-0 ms-2" onclick="addSubInput(this)">
                                                         <i class="bi bi-plus-lg"
@@ -167,30 +187,42 @@
         let month = '{{ $month }}';
         let jmlData = '{{ $jmlData }}';
 
-        document.getElementById('productCategories').addEventListener('change', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             var nomorSuratInput = document.getElementById('nomorSurat');
+            var kategoriSelect = document.getElementById('productCategories');
 
-            switch (this.value) {
-                case 'perbaikan':
-                    nomorSuratInput.value = 'H/UBL/LAB/010/'+jmlData+ '/'+ month + '/' + year;
-                    break;
-                case 'formulir_calas':
-                    nomorSuratInput.value = 'P/UBL/LAB/010/'+jmlData+ '/'+ month + '/' + year;
-                    break;
-                case 'sk_asisten':
-                    nomorSuratInput.value = 'S/UBL/LAB/010/'+jmlData+ '/'+ month + '/' + year;
-                    break;
-                case 'sertifikat_webinar':
-                    nomorSuratInput.value = 'SS/UBL/LAB/010/'+jmlData+ '/'+ month + '/' + year;
-                    break;
-                case 'sertifikat_asisten':
-                    nomorSuratInput.value = 'SA/UBL/LAB/010/'+jmlData+ '/'+ month + '/' + year;
-                    break;
-                default:
-                    nomorSuratInput.value = '';
-                    break;
+            // Set default nomor surat berdasarkan kategori default
+            setNomorSurat(kategoriSelect.value);
+
+            // Update nomor surat saat kategori diubah
+            kategoriSelect.addEventListener('change', function() {
+                setNomorSurat(this.value);
+            });
+
+            function setNomorSurat(kategori) {  
+                switch (kategori) {
+                    case 'Perbaikan':
+                        nomorSuratInput.value = 'H/UBL/LAB/010/' + jmlData + '/' + month + '/' + year;
+                        break;
+                    case 'Formulir Calas':
+                        nomorSuratInput.value = 'P/UBL/LAB/010/' + jmlData + '/' + month + '/' + year;
+                        break;
+                    case 'SK Asisten':
+                        nomorSuratInput.value = 'S/UBL/LAB/010/' + jmlData + '/' + month + '/' + year;
+                        break;
+                    case 'Sertifikat Webinar':
+                        nomorSuratInput.value = 'SS/UBL/LAB/010/' + jmlData + '/' + month + '/' + year;
+                        break;
+                    case 'Sertifikat Asisten':
+                        nomorSuratInput.value = 'SA/UBL/LAB/010/' + jmlData + '/' + month + '/' + year;
+                        break;
+                    default:
+                        nomorSuratInput.value = '';
+                        break;
+                }
             }
         });
+
 
         document.getElementById('productPage').addEventListener('change', function() {
             var additionalInputs = document.getElementById('additionalInputs');

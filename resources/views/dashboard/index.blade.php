@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h4 class="fw-semibold mb-3"><span class="counter-value" data-target="1000000"></span>
+                            <h4 class="fw-semibold mb-3"><span class="counter-value" data-target="{{ $jmlSuratMasuk }}"></span>
                             </h4>
                             <p class="fw-medium text-muted mb-0">Surat Masuk</p>
                         </div>

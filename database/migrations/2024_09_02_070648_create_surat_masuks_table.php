@@ -14,10 +14,14 @@ return new class extends Migration
         Schema::create('surat_masuks', function (Blueprint $table) {
             $table->id();
             $table->string('nomor_surat');
+            $table->string('tujuan_surat');
             $table->string('kategori');
             $table->string('deskripsi');
             $table->string('penutup');
-            $table->string('nama');
+            $table->string('nama_pengirim');
+            $table->string('penerima');
+            $table->string('tanggal_terima');
+            $table->string('expired_data');
             $table->integer('flag')->default(0);
             $table->timestamps();
         });

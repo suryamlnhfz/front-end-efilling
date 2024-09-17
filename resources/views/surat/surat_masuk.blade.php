@@ -10,7 +10,7 @@
                             <div class="card-header d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h5 class="card-title mb-0">Surat Masuk <span
-                                            class="badge bg-dark-subtle text-dark ms-1">254</span></h5>
+                                            class="badge bg-dark-subtle text-dark ms-1">{{ $jmlSuratMasuk }}</span></h5>
                                 </div>
                                 <div class="flex-shrink-0">
                                     <div class="d-flex flex-wrap align-items-start gap-2">
@@ -25,6 +25,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-centered align-middle table-nowrap mb-0">
@@ -36,42 +37,89 @@
                                                 </div>
                                             </th>
                                             <th class="sort cursor-pointer" data-sort="category">Kategori</th>
-                                            <th>Tanda Tangan</th>
-                                            <th>Nama</th>
+                                            <th>Tujuan Surat</th>
+                                            <th>Nama Pengirim</th>
+                                            <th>Penerima</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list form-check-all">
-                                        <tr>
-                                            <td>H/UBL/LAB/010/88/09/24</td>
-                                            <td class="category">Perbaikan</td>
-                                            <td><img src="" alt=""></td>
-                                            <td>Sinta</td>
-                                            <td>
-                                                <div class="dropdown position-static">
-                                                    <button class="btn btn-subtle-secondary btn-sm btn-icon" role="button"
-                                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a class="dropdown-item"
-                                                                href="apps-ecommerce-product-details.html"><i
-                                                                    class="ph-eye align-middle me-1"></i> View</a></li>
-                                                        <li><a class="dropdown-item edit-item-btn" data-bs-toggle="modal"
-                                                                href="#showModal"><i
-                                                                    class="ph-pencil align-middle me-1"></i> Edit</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item remove-item-btn" data-bs-toggle="modal"
-                                                                href="#deleteRecordModal"><i
-                                                                    class="ph-trash align-middle me-1"></i> Remove</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @foreach ($suratMasuk as $surat)
+                                            <tr>
+                                                <td>{{ $surat->nomor_surat }}</td>
+                                                <td class="category">{{ $surat->kategori }}</td>
+                                                <td>{{ $surat->tujuan_surat }}</td>
+                                                <td>{{ $surat->nama_pengirim }}</td>
+                                                <td>{{ $surat->penerima }}</td>
+                                                {{-- @php
+                                                    dd(route('cetak-surat.cetak_surat', encrypt_id($surat->id)));
+                                                @endphp --}}
+                                                <td>
+                                                    <div class="dropdown position-static">
+                                                        <button class="btn btn-subtle-secondary btn-sm btn-icon"
+                                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="bi bi-three-dots-vertical"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-end">
+                                                            <li><a class="dropdown-item"
+                                                                    href="{{ route('cetak-surat.cetak_surat', encrypt_id($surat->id)) }}">
+                                                                    <i class="bi bi-printer align-middle me-1"></i>
+                                                                    Cetak</a></li>
+
+
+                                                            <a class="dropdown-item edit-item-btn"
+                                                                href="{{ route('surat.edit', encrypt_id($surat->id)) }}">
+                                                                <i class="ph-pencil align-middle me-1"></i> Ubah
+                                                            </a>
+
+                                                            </li>
+
+                                                            <li>
+                                                                <button class="dropdown-item remove-item-btn"
+                                                                    data-bs-toggle="modal" href="#deleteRecordModal">
+                                                                    <i class="ph-trash align-middle me-1"></i> Hapus
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div><!--end table-responsive-->
+                            <!-- Modal -->
+                            <div class="modal fade bs-example-modal-center" id="deleteRecordModal" tabindex="-1"
+                                role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body text-center p-5">
+                                            <i class="bi bi-exclamation-triangle text-warning display-5"></i>
+                                            <div class="mt-4">
+                                                <h4 class="mb-3">Apakah anda yakin ingin menghapus data?</h4>
+                                                <p class="text-muted mb-4">Data yang dihapus tidak dapat dipulihkan lagi,
+                                                    klik yakin untuk menghapus data</p>
+                                                <div class="hstack gap-2 justify-content-center">
+                                                    <button type="button" class="btn btn-light"
+                                                        data-bs-dismiss="modal">Tutup</button>
+                                                    <!-- Link delete with route -->
+                                                    <a href="{{ route('surat-masuk.destroy', encrypt_id($surat->id)) }}"
+                                                        class="btn btn-danger"
+                                                        onclick="event.preventDefault(); document.getElementById('delete-form').submit();">Yakin</a>
+                                                    <!-- Form delete -->
+                                                    <form id="delete-form"
+                                                        action="{{ route('surat-masuk.destroy', encrypt_id($surat->id)) }}"
+                                                        method="POST" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
 
                             <div class="noresult" style="display: none">
                                 <div class="text-center py-4">

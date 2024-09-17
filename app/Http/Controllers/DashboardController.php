@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -11,7 +12,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $jmlSuratMasuk = SuratMasuk::count();
+        return view('dashboard.index', compact('jmlSuratMasuk'));
     }
 
     /**
